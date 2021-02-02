@@ -1,26 +1,40 @@
 package ua.lviv.lgs.periodicals.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "periodical")
 public class Periodical {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column
     private String name;
 
+    @Column
     private String description;
 
+    @Column
     private Double price;
 
     public Periodical() {
     }
 
-    public Periodical(Integer id, String name, String description, Double price) {
-        this.id = id;
+    public Periodical(String name, String description, Double price) {
         this.name = name;
         this.description = description;
         this.price = price;
     }
 
-    public Periodical(String name, String description, Double price) {
+    public Periodical(Integer id, String name, String description, Double price) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
@@ -59,34 +73,50 @@ public class Periodical {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Periodical that = (Periodical) o;
-
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        return price != null ? price.equals(that.price) : that.price == null;
-    }
-
-    @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (price != null ? price.hashCode() : 0);
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((description == null) ? 0 : description.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((price == null) ? 0 : price.hashCode());
         return result;
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Periodical other = (Periodical) obj;
+        if (description == null) {
+            if (other.description != null)
+                return false;
+        } else if (!description.equals(other.description))
+            return false;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        if (price == null) {
+            if (other.price != null)
+                return false;
+        } else if (!price.equals(other.price))
+            return false;
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "Periodical{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                '}';
+        return "Periodical [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + "]";
     }
 }
