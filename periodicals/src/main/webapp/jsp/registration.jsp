@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+         pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -28,7 +28,7 @@
 
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
         <h2 class="form-signin-heading">Create your account</h2>
-        
+
         <spring:bind path="firstName">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="firstName" class="form-control" placeholder="First name"
@@ -36,16 +36,16 @@
                 <form:errors path="firstName"></form:errors>
             </div>
         </spring:bind>
-        
-          <spring:bind path="lastName">
+
+        <spring:bind path="lastName">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="lastName" class="form-control" placeholder="Last name"
                             autofocus="true"></form:input>
                 <form:errors path="lastName"></form:errors>
             </div>
         </spring:bind>
-        
-        
+
+
         <spring:bind path="email">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="email" class="form-control" placeholder="Email"
@@ -73,8 +73,5 @@
     </form:form>
 
 </div>
-<!-- /container -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 </html>

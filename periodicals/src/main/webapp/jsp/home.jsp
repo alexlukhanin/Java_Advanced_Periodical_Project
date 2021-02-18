@@ -1,7 +1,8 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +29,7 @@
         <h3 class="w3-bar-item">Menu</h3>
         <a href="/home" class="w3-bar-item w3-button">Home</a> <a
             href="/create-periodical" class="w3-bar-item w3-button">Create
-        periodical</a> <a href="#" class="w3-bar-item w3-button">Bucket</a>
+        periodical</a> <a href="/buckets" class="w3-bar-item w3-button">Bucket</a>
     </div>
 
 
@@ -44,13 +45,14 @@
             <c:if test="${pageContext.request.userPrincipal.name != null}">
                 <form id="logoutForm" method="POST" action="${contextPath}/logout">
                     <input type="hidden" name="${_csrf.parameterName}"
-                           value="${_csrf.token}"/>
+                           value="${_csrf.token}" />
                 </form>
                 <h2>
                     Welcome ${pageContext.request.userPrincipal.name} | <a
                         onclick="document.forms['logoutForm'].submit()">Logout</a>
                 </h2>
             </c:if>
+
 
 
             <c:if test="${not empty periodicals}">
@@ -74,6 +76,8 @@
                         </form:form>
 
 
+
+
                     </div>
 
                 </c:forEach>
@@ -84,9 +88,5 @@
 
 
 </div>
-<!-- /container -->
-<script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 </html>
