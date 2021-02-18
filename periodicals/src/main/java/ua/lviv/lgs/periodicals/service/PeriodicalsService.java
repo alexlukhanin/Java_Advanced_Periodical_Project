@@ -10,18 +10,20 @@ import ua.lviv.lgs.periodicals.domain.Periodical;
 
 @Service
 public class PeriodicalsService {
-	
+
 	@Autowired
 	private PeriodicalRepository periodicalRepository;
-	
+
 	public Periodical save(Periodical periodical) {
 		return periodicalRepository.save(periodical);
 	}
-	
+
 	public List<Periodical> getAllPeriodicals(){
 		return periodicalRepository.findAll();
 	}
-	
-	
-	
+
+	public Periodical findById(Integer id) {
+		return periodicalRepository.findById(id).get();
+	}
+
 }
